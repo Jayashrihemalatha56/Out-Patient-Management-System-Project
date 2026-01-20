@@ -2,13 +2,28 @@ package com.outpatientmanagement.dto.request;
 
 import java.time.LocalDate;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
 public class PaymentRequest {
 
+	@NotNull(message = "Appointment ID is required")
 	private Long appointmentId;
+	 
+	@NotNull(message = "Amount is required")
+	@Positive(message = "Amount must be greater than 0")
 	private Double amount;
+	 
+	@NotBlank(message = "Payment mode is required")
 	private String paymentMode;
+	 
+	@NotBlank(message = "Payment status is required")
 	private String paymentStatus;
+	 
+	@NotNull(message = "Payment date is required")
 	private LocalDate paymentDate;
+	
 	public Long getAppointmentId() {
 		return appointmentId;
 	}

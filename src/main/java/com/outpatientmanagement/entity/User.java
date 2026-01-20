@@ -1,6 +1,10 @@
 package com.outpatientmanagement.entity;
 
+import com.outpatientmanagement.enums.Role;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -14,11 +18,15 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	private String fullName;
 	private String username;
 	private String password;
-	private String role;
+	private String phoneNo;
 	private String email;
 	private Boolean active;
+	
+	@Enumerated(EnumType.STRING)
+	private Role role;
 	
 	public User() {
 		super();
@@ -30,6 +38,14 @@ public class User {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 
 	public String getUsername() {
@@ -48,12 +64,13 @@ public class User {
 		this.password = password;
 	}
 
-	public String getRole() {
-		return role;
+	
+	public String getPhoneNo() {
+		return phoneNo;
 	}
 
-	public void setRole(String role) {
-		this.role = role;
+	public void setPhoneNo(String phoneNo) {
+		this.phoneNo = phoneNo;
 	}
 
 	public String getEmail() {
@@ -72,11 +89,18 @@ public class User {
 		this.active = active;
 	}
 
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", role=" + role + ", email="
-				+ email + ", active=" + active + "]";
-	}
-	
+		return "User [id=" + id + ", fullName=" + fullName + ", username=" + username + ", password=" + password
+				+ ", email=" + email + ", active=" + active + ", role=" + role + "]";
+	}	
 	
 }

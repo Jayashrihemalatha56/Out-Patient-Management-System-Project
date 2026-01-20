@@ -3,20 +3,23 @@ package com.outpatientmanagement.dto.request;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class AppointmentRequest {
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
-	private Long patientId;
-	private Long doctorId;
-	private LocalDate appointmentDate;
-	private LocalTime appointmentTime;
-	private String status;
+public class AppointmentRequest {
+ 
+    @NotNull(message = "Doctor ID is required")
+    private Long doctorId;
+ 
+    @NotNull(message = "Appointment date is required")
+    @FutureOrPresent(message = "Appointment date must be today or future")
+    private LocalDate appointmentDate;
+ 
+    @NotNull(message = "Appointment time is required")
+    private LocalTime appointmentTime;
+ 
 	
-	public Long getPatientId() {
-		return patientId;
-	}
-	public void setPatientId(Long patientId) {
-		this.patientId = patientId;
-	}
 	public Long getDoctorId() {
 		return doctorId;
 	}
@@ -34,12 +37,6 @@ public class AppointmentRequest {
 	}
 	public void setAppointmentTime(LocalTime appointmentTime) {
 		this.appointmentTime = appointmentTime;
-	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
 	}
 	
 	

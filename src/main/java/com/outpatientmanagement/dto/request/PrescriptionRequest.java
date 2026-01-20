@@ -1,11 +1,23 @@
 package com.outpatientmanagement.dto.request;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 public class PrescriptionRequest {
 
+	@NotNull(message = "Appointment ID is required")
 	private Long appointmentId;
+	 
+	@NotBlank(message = "Doctor name is required")
 	private String doctorName;
+	 
+	@NotBlank(message = "Diagnosis are required")
+	private String diagnosis;
+	
+	@NotBlank(message = "Medicines are required")
 	private String medicines;
 	private String notes;
+	
 	public Long getAppointmentId() {
 		return appointmentId;
 	}
@@ -17,6 +29,13 @@ public class PrescriptionRequest {
 	}
 	public void setDoctorName(String doctorName) {
 		this.doctorName = doctorName;
+	}
+	
+	public String getDiagnosis() {
+		return diagnosis;
+	}
+	public void setDiagnosis(String diagnosis) {
+		this.diagnosis = diagnosis;
 	}
 	public String getMedicines() {
 		return medicines;

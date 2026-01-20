@@ -9,6 +9,7 @@ public class PatientResponse {
 	private String phone;
 	private String address;
 	private String symptoms;
+	private Long userId;
 	
 	public Long getPatientId() {
 		return patientId;
@@ -52,5 +53,12 @@ public class PatientResponse {
 	public void setSymptoms(String symptoms) {
 		this.symptoms = symptoms;
 	}
+	public Long getUserId() {
+		return userId;
+	}
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+	
 	
 }

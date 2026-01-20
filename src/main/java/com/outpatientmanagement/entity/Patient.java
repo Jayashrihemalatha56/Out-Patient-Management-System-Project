@@ -5,7 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,42 +16,44 @@ public class Patient {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long patientId;
 	
-	private String name;
+	private String patientName;
 	private Integer age;
 	private String gender;
-	private String phone;
+	private String phoneNo;
 	private String address;
 	private String symptoms;
 	
-	@OneToOne
-	@JoinColumn(name="user_id")
+	@ManyToOne
+	@JoinColumn(name="user_id",unique=true)
 	private User user;
 
-	
 	public Patient() {
 		super();
 	}
-
 
 	public Long getPatientId() {
 		return patientId;
 	}
 
-
 	public void setPatientId(Long patientId) {
 		this.patientId = patientId;
 	}
 
-
-	public String getName() {
-		return name;
+	public String getPatientName() {
+		return patientName;
 	}
 
-
-	public void setName(String name) {
-		this.name = name;
+	public void setPatientName(String patientName) {
+		this.patientName = patientName;
 	}
 
+	public String getPhoneNo() {
+		return phoneNo;
+	}
+
+	public void setPhoneNo(String phoneNo) {
+		this.phoneNo = phoneNo;
+	}
 
 	public Integer getAge() {
 		return age;
@@ -70,16 +72,6 @@ public class Patient {
 
 	public void setGender(String gender) {
 		this.gender = gender;
-	}
-
-
-	public String getPhone() {
-		return phone;
-	}
-
-
-	public void setPhone(String phone) {
-		this.phone = phone;
 	}
 
 
@@ -102,23 +94,21 @@ public class Patient {
 		this.symptoms = symptoms;
 	}
 
-
 	public User getUser() {
 		return user;
 	}
-
 
 	public void setUser(User user) {
 		this.user = user;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Patient [patientId=" + patientId + ", name=" + name + ", age=" + age + ", gender=" + gender + ", phone="
-				+ phone + ", address=" + address + ", symptoms=" + symptoms + ", user=" + user + "]";
+		return "Patient [patientId=" + patientId + ", patientName=" + patientName + ", age=" + age + ", gender="
+				+ gender + ", phoneNo=" + phoneNo + ", address=" + address + ", symptoms=" + symptoms + ", user=" + user
+				+ "]";
 	}
 
-	
+		
 	
 }

@@ -1,12 +1,16 @@
 package com.outpatientmanagement.dto.response;
 
+import com.outpatientmanagement.enums.Role;
+
 public class UserResponse {
 
 	private Long id;
 	private String username;
-	private String role;
+	private Role role;
+	private String phoneNo;
 	private String email;
 	private Boolean active;
+	
 	public Long getId() {
 		return id;
 	}
@@ -19,11 +23,17 @@ public class UserResponse {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getRole() {
+	public Role getRole() {
 		return role;
 	}
-	public void setRole(String role) {
+	public void setRole(Role role) {
 		this.role = role;
+	}
+	public String getPhoneNo() {
+		return phoneNo;
+	}
+	public void setPhoneNo(String phoneNo) {
+		this.phoneNo = phoneNo;
 	}
 	public String getEmail() {
 		return email;

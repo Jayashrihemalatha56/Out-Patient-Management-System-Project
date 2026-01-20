@@ -1,20 +1,40 @@
 package com.outpatientmanagement.dto.request;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+
 public class PatientRequest {
 
-	private String name;
-	private Integer age;
-	private String gender;
-	private String phone;
-	private String address;
-	private String symptoms;
-	private Long userId;
-	
-	public String getName() {
-		return name;
+	@NotBlank(message = "Patient name is required")
+    private String patientName;
+ 
+    @NotNull(message = "Age is required")
+    @Min(value = 1, message = "Age must be greater than 0")
+    private Integer age;
+ 
+    @NotBlank(message = "Gender is required")
+    private String gender;
+ 
+    @NotBlank(message = "Phone number is required")
+    @Pattern(
+        regexp = "^[6-9]\\d{9}$",
+        message = "Invalid phone number"
+    		)
+    private String phoneNo;
+ 
+    @NotBlank(message = "Address is required")
+    private String address;
+ 
+    @NotBlank(message = "Symptoms are required")
+    private String symptoms;
+ 
+	public String getPatientName() {
+		return patientName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setPatientName(String patientName) {
+		this.patientName = patientName;
 	}
 	public Integer getAge() {
 		return age;
@@ -28,11 +48,12 @@ public class PatientRequest {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public String getPhone() {
-		return phone;
+	
+	public String getPhoneNo() {
+		return phoneNo;
 	}
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setPhoneNo(String phoneNo) {
+		this.phoneNo = phoneNo;
 	}
 	public String getAddress() {
 		return address;
@@ -45,12 +66,6 @@ public class PatientRequest {
 	}
 	public void setSymptoms(String symptoms) {
 		this.symptoms = symptoms;
-	}
-	public Long getUserId() {
-		return userId;
-	}
-	public void setUserId(Long userId) {
-		this.userId = userId;
 	}
 	
 	

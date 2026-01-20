@@ -16,7 +16,7 @@ public class Doctor {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long doctorId;
 
-	private String name;
+	private String doctorName;
 	private String specialization;
 	private String phone;
 	private String email;
@@ -38,12 +38,13 @@ public class Doctor {
 		this.doctorId = doctorId;
 	}
 
-	public String getName() {
-		return name;
+	
+	public String getDoctorName() {
+		return doctorName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setDoctorName(String doctorName) {
+		this.doctorName = doctorName;
 	}
 
 	public String getSpecialization() {
@@ -88,8 +89,10 @@ public class Doctor {
 
 	@Override
 	public String toString() {
-		return "Doctor [doctorId=" + doctorId + ", name=" + name + ", specialization=" + specialization + ", phone="
-				+ phone + ", email=" + email + ", available=" + available + ", user=" + user + "]";
+		return "Doctor [doctorId=" + doctorId + ", doctorName=" + doctorName + ", specialization=" + specialization
+				+ ", phone=" + phone + ", email=" + email + ", available=" + available + ", user=" + user + "]";
 	}
+
+	
 
 }
